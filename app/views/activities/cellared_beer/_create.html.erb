@@ -1,0 +1,11 @@
+<% if cellared_beer %>
+	<span class="activitycontent">
+		added 
+		<%= link_to activity.cellared_beer.beer.name, activity.cellared_beer.beer %> 
+		to their 
+		<%= link_to "Cellar", cellar_user_path(@user) %>
+	</span>
+	<span class="timestamp">
+		<%= time_ago_in_words(activity.created_at) %> ago 
+	</span>
+<% end %>

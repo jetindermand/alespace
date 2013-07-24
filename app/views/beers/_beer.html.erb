@@ -1,0 +1,22 @@
+<tr>
+  <td>
+    <div class="rating">
+      <h4>4.5</h4>
+    </div>
+  </td>
+  <td>
+    <h5><%= link_to beer.name, beer %></h5>
+  </td>
+  <td>
+    <%= beer.abv %>%
+  </td>
+  <td>
+    <%= beer.style %>
+  </td>
+  <td>
+    <% if current_user.has_role? :admin %>
+      | <%= link_to "edit", edit_beer_path(beer) %> | <%= link_to "delete", beer_path(beer), method: :delete,
+                                  data: { confirm: "You sure?" } %>
+        <% end %>
+  </td>
+</tr>

@@ -1,0 +1,16 @@
+<%= form_for(current_user.cellared_beers.build) do |f| %>
+
+      <%= f.label @beer.name %>
+      <%= f.hidden_field :beer_id, value: @beer.id, :readonly => true %>
+
+      <%= f.label :year %>
+      <%= select_year(Date.today, :start_year => Time.now.year, :end_year => Time.now.year - 50, :field_name => :year, :prefix => :cellared_beer) %>
+
+      <%= f.label :size %> 
+      <%= f.select :size, options_for_select([["12oz","12oz"],["22oz","22oz"],["750mL","750mL"],["Other","Other"]]) %>
+
+      <%= f.label :qty %>
+      <%= f.text_field :qty, :required => true, :value => "1" %>
+
+      <%= f.submit "Cellar", class: "btn btn-warning" %>
+    <% end %>

@@ -1,0 +1,39 @@
+<% provide(:title, @brewery.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @brewery.name %>
+         <% if current_user.has_role? :admin %>
+    	| <%= link_to "edit", edit_brewery_path(@brewery) %> | <%= link_to "delete", brewery_path(@brewery), method: :delete,
+                                  data: { confirm: "You sure?" } %>
+      	<% end %>
+      </h1>
+      <p>
+      	<%= link_to @brewery.web, @brewery.web %>
+      </p>
+      <% if @brewery.address? %>
+        <p class="brewery_address">
+      	  <%= @brewery.address %><br /><%= @brewery.city %>,&nbsp;<%= @brewery.state %>&nbsp;<%= @brewery.zip %>
+        </p>
+      <% end %>
+      <p class="brewery_desc">
+      	<%= @brewery.desc %>
+      </p>
+      <p>
+
+      </p>
+    </section>
+  </aside>
+  <div class="span8">
+    <% if @brewery.beers.any? %>
+      <h3><%= pluralize(@brewery.beers.count, "beer") %></h3>
+      <table class="beers">
+<th>Rating</th><th>Name</th><th>ABV</th><th>Style</th>
+
+        <%= render @beers %>
+      </table>
+      <%= will_paginate @beers %>
+    <% end %>
+  </div>
+</div>

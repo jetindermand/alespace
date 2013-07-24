@@ -1,0 +1,9 @@
+<% if relationship %>
+  	<span class="activitycontent">
+  		Started following: 
+  		<%= link_to activity.relationship.followed.name, activity.relationship.followed %>
+	</span>
+	<span class="timestamp">
+		<%= time_ago_in_words(activity.created_at) %> ago
+	</span>
+<% end %>

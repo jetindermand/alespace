@@ -1,0 +1,29 @@
+<% provide(:title, @beer.name) %>
+<div class="row">
+  <aside class="span4">
+    <section class="infobox">
+      <h1>
+        <%= @beer.name %>
+        <% if current_user.has_role? :admin %>
+    	| <%= link_to "edit", edit_beer_path(@beer) %> | <%= link_to "delete", beer_path(@beer), method: :delete,
+                                  data: { confirm: "You sure?" } %>
+        <% end %>
+      </h1>
+      <p class="beer_brewery">
+      	By: <%= link_to @beer.brewery.name, @beer.brewery %>
+      </p>      
+      <p class="beer_info">
+      	Style: <%= @beer.style %><br />
+      	ABV: <%= @beer.abv %>%
+      </p>
+      <p class="beer_desc">
+      	Description:<br />
+      	<%= @beer.desc %>
+      </p>
+    </section>
+  </aside>
+  <div class="span8">
+    <h3>Users cellaring</h3>
+      <%= render 'add_to_cellar_form' %>
+  </div>
+</div>

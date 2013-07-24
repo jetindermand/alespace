@@ -1,0 +1,9 @@
+<% @user ||= current_user %>
+<div class="stats">
+  <a href="<%= cellar_user_path(@user) %>">
+    <strong id="cellaring" class="stat">
+      <%= @user.cellared_beers.count %>
+    </strong>
+    beers
+  </a>
+</div>

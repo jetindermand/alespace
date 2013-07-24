@@ -1,0 +1,8 @@
+<li>
+  <%= link_to brewery.name, brewery %>
+  <% if current_user.has_role? :admin %>
+    | <%= link_to "delete", brewery, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
+  <p><%= brewery.city %></p>
+</li>

@@ -1,0 +1,19 @@
+<% @user ||= current_user %>
+<div class="cellar-stats">
+  <div class="cellar-stat">
+  <a href="#" class="cellar-stat">
+    <strong id="cellared-total" class="stat">
+      <%= @beer.cellared_beers.count %>
+    </strong>
+    total
+  </a>
+  </div>
+  <div class="cellar-stat">
+  <a href="<%= cellar_user_path(current_user) %>" class="cellar-stat">
+    <strong id="cellared-user" class="stat">
+      <%= current_user.beers.where(:id => @beer.id).count %>
+    </strong>
+    owned
+  </a>
+  </div>
+</div>

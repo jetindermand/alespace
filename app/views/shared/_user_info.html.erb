@@ -1,0 +1,31 @@
+<section>
+    <%= link_to image_tag(avatar_url(@user, size: 52)), current_user %>
+    <%= render 'follow_form' if user_signed_in? %>
+	<h1>
+		 <%= @user.name %>
+	</h1>
+	<span>
+			<%= pluralize(current_user.microposts.count, "post") %>
+	</span>
+	<%= render 'shared/stats' %>
+</section>
+<section>
+  <% if (user_signed_in? && current_user == @user) %>
+      <%= render 'shared/micropost_form' %>
+  <% end %>
+</section>
+<section> 
+  <p>Following - <%= @following.count %></p>
+  <% if @following.any? %>
+    <div class="user_avatars">
+      <% @following.each do |user| %>
+        <%= link_to image_tag(avatar_url(user, size: 30)), user %>
+      <% end %>
+  <% end %>
+  <p>Followers - <%= @followers.count %></p>
+  <% if @followers.any? %>
+      <% @followers.each do |user| %>
+        <%= link_to image_tag(avatar_url(user, size: 30)), user %>
+      <% end %>
+  <% end %>
+</section>

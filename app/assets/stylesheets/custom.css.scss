@@ -1,0 +1,331 @@
+@import "bootstrap";
+
+/* mixins, variables, etc. */
+
+$grayMediumLight: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 41px;
+  background: url('wood.jpg') 
+}
+
+
+
+
+
+
+
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.7em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $grayLight;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+a {
+      color: #CC6633;
+    }
+
+
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $grayMediumLight;
+  color: $gray;
+  a {
+    color: $grayLight;
+    &:hover { 
+      color: $gray;
+    }
+  }  
+  small { 
+    float: left; 
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+/* sidebar */
+
+aside {
+  section {
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:first-child {
+      border: 1px solid #FFCC33;
+      border-radius: 8px 8px 8px 8px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+      background-color: #FFCC33;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+    p {
+      font-size: 0.85em;
+      text-align: left;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+    infobox {
+      margin-bottom: 20px;
+      
+    }
+  }
+}
+
+#follow_form {
+  position:relative;
+  float: right;
+  right:10px;
+  top:0px;
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.stats {
+  overflow: auto;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $grayLighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+}
+
+.beer_info {
+  font_size: 0.85em;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+ }
+
+ 
+/* users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    border-top: 1px solid $grayLighter;
+    
+  }
+}
+
+/* microposts */
+
+.microposts {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+.content {
+  display: block;
+}
+.timestamp {
+  color: $grayLight;
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+/* activities list */
+
+.activity {
+  border-bottom: solid 1px #CCC;
+  padding: 16px 0;
+}
+.activitycontent {
+  display: block;
+}
+
+/* cellared beer list */
+
+table.beers {
+  th {
+    color:$grayLight;
+    padding-left:15px;
+    font-size:0.8em;
+  }
+  td {
+    padding-left:15px;
+    vertical-align:center;
+    border-top:1px solid $grayLighter;
+    text-align:center;
+    form {
+      padding-top:0px;
+    }
+    :first-child.rating {
+      border: 1px solid #FFCC33;
+      border-radius: 8px 8px 8px 8px;
+      color:#FFFFFF;
+      background-color: #FFCC33;
+      padding-left:3px;
+      padding-right:3px;
+      vertical-align:top;
+      line-height:0px;
+    }
+  }
+}
+
+.cellar-stats {
+  overflow: auto;
+  width: 108px;
+  float:right;
+  margin-top: -15px;
+  a {
+    float: left;
+    text-align:center;
+    padding: 0 10px;
+    border-left: 1px solid gray;
+    color: gray;
+    &:first-child {
+      padding-left: 2;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+  cellar-stat {
+  border: 1px solid #FFFFFF;
+    border-radius: 8px 8px 8px 8px;
+    color:gray;
+    background-color: #FFFFFF;
+    padding-left:3px;
+    padding-right:3px;
+    padding-bottom:12px;
+    vertical-align:top;
+    line-height:0px;
+  }
+}

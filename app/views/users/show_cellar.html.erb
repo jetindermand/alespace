@@ -1,0 +1,21 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <aside class="span4">
+    <%= render 'shared/user_info' %>
+  </aside>
+  <div class="span8">
+    <ul class="nav nav-tabs">
+      <li>
+        <%= link_to "Activity", user_path(@user) %>
+      </li>
+      <li class="active"><a href="#">Cellar</a></li>
+      <li><a href="#">Info</a></li>
+      <% if (user_signed_in? && current_user == @user) %>
+      <li><a href="#">Trades</a></li>
+      <li><a href="#">Messages</a></li>
+      <% end %>
+    </ul> 
+    <h3><%= @title %></h3>
+      <%= render 'beers/cellared_beer' if @beer_counts.any? %>
+  </div>
+</div>

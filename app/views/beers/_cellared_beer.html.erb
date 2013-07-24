@@ -1,0 +1,32 @@
+<table class="beers">
+<th>Name</th><th>Brewery</th><th>ABV</th><th>Style</th><th>Year</th><th>Size</th><th>Amt</th>
+<% @cellared_beers.each do |beer| %>
+<tr>
+  <td>
+    <h5><%= link_to beer.beer.name, beer_path(beer.beer) %></h5>
+  </td>
+  <td>
+    <%= link_to beer.beer.brewery.name, brewery_path(beer.beer.brewery) %>
+  </td>
+  <td>
+    <%= beer.beer.abv %>%
+  </td>
+  <td>
+    <%= beer.beer.style %>
+  </td>
+  <td>
+    <%= beer.year %>
+  </td>
+  <td>
+    <%= beer.size %>
+  </td>
+  <td>
+    <%= beer.qty %>
+  </td> 
+  <td>
+    <%= link_to "delete", current_user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  </td>
+</tr>
+<% end %>
+</table>
